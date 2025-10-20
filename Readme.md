@@ -1,0 +1,1 @@
+以 Linux 为例，将本项目下所有的文件放在 `~/.config/nvim` 文件夹下。也可以直接在上述文件夹中直接使用 `git clone`，然后删掉 `.git` 文件夹和 `Readme.md`。
