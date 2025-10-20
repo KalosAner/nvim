@@ -7,16 +7,37 @@ require("mason").setup({
       }
   }
 })
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-require("mason-lspconfig").setup({
-  -- 确保安装，根据需要填写
-  ensure_installed = {
-    "lua_ls",
+-- Lua
+vim.lsp.config["lua_ls"] = {
+  cmd = { "lua-language-server" },
+  capabilities = capabilities,
+  settings = {
+    Lua = {
+      diagnostics = { globals = { "vim" } },
+      workspace = { checkThirdParty = false },
+    },
   },
-})
+}
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-require("lspconfig").lua_ls.setup {
+-- Python
+vim.lsp.config["pyright"] = {
+  cmd = { "pyright-langserver", "--stdio" },
   capabilities = capabilities,
 }
+
+-- C/C++
+vim.lsp.config["clangd"] = {
+  cmd = { "clangd" },
+  capabilities = capabilities,
+}
+
+-- Bash
+vim.lsp.config["bashls"] = {
+  cmd = { "bash-language-server", "start" },
+  capabilities = capabilities,
+}
+
+-- 启用全部 LSP
+vim.lsp.enable({ "lua_ls", "pyright", "clangd", "bashls" })
