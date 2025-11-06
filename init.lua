@@ -14,3 +14,20 @@ require("plugins/autopairs")
 require("plugins/bufferline")
 require("plugins/gitsigns")
 require("plugins/telescope")
+
+local cmp = require('cmp')
+
+cmp.setup({
+    mapping = {
+        ['<CR>'] = cmp.mapping({
+            i = function(fallback)
+                if cmp.visible() then
+                    fallback()
+                else
+                    fallback()
+                end
+            end
+        }),
+        ['<Tab>'] = cmp.mapping.confirm({ select = true }),
+    }
+})
