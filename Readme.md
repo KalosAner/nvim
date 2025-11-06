@@ -12,5 +12,6 @@
 
 2、Neovim 版本太旧，可以使用 `apt remove neovim;snap install nvim --classic` 安装新版
 
-
 修改插件之后需要同步，可以在 Nvim 里边输入 `:PackerSync`。
+
+注意：以上配置完成之后只能在该用户下使用，如果想让root用户也使用，最简单的方法就是使用命令 `ln -s /home/{xxx}/.config/nvim /root/.config/nvim` 来创建一个软连接。
